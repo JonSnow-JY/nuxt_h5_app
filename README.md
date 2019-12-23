@@ -47,9 +47,7 @@ postcss: {
 
 - 按需引入 vant
 
-```
-cnpm i babel-plugin-component -D
-```
+  - babel-plugin-component
 
 - nuxt.config.js 下 build 添加如下配置
 
@@ -85,6 +83,48 @@ Vue.use(Button)
 ```
 plugins: ['@/plugins/vant'],
 css: ['reset.css', 'flex.css', 'vant/lib/index.css'],
+```
+
+---
+
+- 配置使用 import
+
+  - @babel/cli
+  - @babel/core
+  - @babel/node
+  - @babel/preset-env
+
+- 修改 package.json 文件
+
+```
+"scripts": {
+  "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server --exec babel-node --presets @babel/env",
+  "build": "nuxt build",
+  "start": "cross-env NODE_ENV=production node server/index.js --exec babel-node --presets @babel/env",
+  "generate": "nuxt generate",
+  "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+},
+```
+
+- 新增.babelrc 文件
+
+```
+{
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
 ```
 
 **现在有一个问题：vant 的 css 是全局引入的，导致打包文件很大，githulb 上有人提 issue，但是无解。**
