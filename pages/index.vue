@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    121212
+    几哈的甲方哈卡水电费哈萨克打飞机安徽的付款后撒旦教发哈萨克积分兑换
   </div>
 </template>
 
@@ -22,4 +22,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+div {
+  font-size: 16px;
+}
+</style>
