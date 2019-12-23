@@ -23,11 +23,11 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['reset.css', 'flex.css'],
+  css: ['reset.css', 'flex.css', 'vant/lib/index.css'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['@/plugins/vant'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -81,6 +81,18 @@ module.exports = {
           'postcss-zindex': false
         }
       }
+    },
+    babel: {
+      plugins: [
+        [
+          'component',
+          {
+            libraryName: 'vant',
+            libraryDirectory: 'es',
+            style: false
+          }
+        ]
+      ]
     },
     extend(config, ctx) {}
   }
