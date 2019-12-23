@@ -45,7 +45,7 @@ postcss: {
 
 ---
 
-- 按需引入 vant
+<!-- - 按需引入 vant
 
   - babel-plugin-component
 
@@ -64,7 +64,7 @@ babel: {
     ]
   ]
 },
-```
+``` -->
 
 ---
 
