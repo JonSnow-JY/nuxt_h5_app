@@ -1,18 +1,33 @@
 <template lang="html">
   <div class="">
-    每个人都有一个死角，自己走不出来，别人也走不进去；我把最深沉的秘密藏在这里，你不懂我，我不怪你。
-    <van-button type="default">默认按钮</van-button>
+    <!-- 轮播模块 -->
+    <van-swipe :autoplay="3000" indicator-color="white">
+      <van-swipe-item v-for="(item, idx) in 3" :key="idx">
+        <img
+          :src="require(`@/assets/images/bg${item}.png`)"
+          width="100%"
+          class="swipe-img"
+        />
+      </van-swipe-item>
+    </van-swipe>
+    <!-- 按钮组 -->
+    <ul flex="box:mean" class="ul-btn-wrapper">
+      <li flex="box:mean">
+        <van-button type="primary">发<i />货</van-button>
+      </li>
+      <li flex="box:mean">
+        <van-button type="danger" @click="$router.push('/inquiry')"
+          >询<i />价</van-button
+        >
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { Button } from 'vant'
-
 export default {
   name: '',
-  components: {
-    VanButton: Button
-  },
+  components: {},
   mixins: [],
   props: {},
   data() {
@@ -28,7 +43,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-  font-size: 16px;
+.swipe-img {
+  height: 150px;
+  float: left;
+}
+.ul-btn-wrapper {
+  margin-top: 40px;
+  li {
+    padding: 0 16px;
+    font-size: 20px;
+    i {
+      padding: 0 4px;
+    }
+  }
 }
 </style>

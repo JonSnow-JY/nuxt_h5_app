@@ -1,3 +1,5 @@
+const resolve = (dir) => require('path').join(__dirname, dir)
+
 module.exports = {
   mode: 'universal',
   /*
@@ -23,7 +25,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['reset.css', 'flex.css', 'vant/lib/index.css'],
+  css: ['reset.css', 'flex.css', 'vant/lib/index.less'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -82,18 +84,30 @@ module.exports = {
         }
       }
     },
-    babel: {
-      plugins: [
-        [
-          'component',
-          {
-            libraryName: 'vant',
-            libraryDirectory: 'es',
-            style: false
-          }
-        ]
-      ]
+    // babel: {
+    //   plugins: [
+    //     [
+    //       'import',
+    //       {
+    //         libraryName: 'vant',
+    //         libraryDirectory: 'es',
+    //         style: false
+    //       },
+    //       'vant'
+    //     ]
+    //   ]
+    // },
+    loaders: {
+      less: {
+        javascriptEnabled: true,
+        data: `
+          @import "@/assets/less/var.less";
+        `,
+        modifyVars: {
+          hack: `true; @import "${resolve('./assets/less/var')}";`
+        }
+      }
     },
-    extend(config, ctx) {}
+    extend(config, { isDev, isClient }) {}
   }
 }
